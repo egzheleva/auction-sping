@@ -1,0 +1,26 @@
+.card {
+    /* background-color: red; */
+    
+    float: left;
+    margin: 22px;
+}
+
+.card-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 44px;
+}
+
+.card-img-top {
+    height: 235px;
+}
+
+.card-body {
+    height: 200px;
+    background-color: whitesmoke;   
+}
+.card-button {
+    bottom: 7px;
+    position: absolute;
+    right: 7px;
+}

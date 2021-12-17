@@ -1,0 +1,17 @@
+.header-container h4 {
+    text-align: center;
+    padding: 11px;
+}
+
+a {
+    color: black;
+}
+
+.active {
+    /* color: red; */
+}
+
+.nav-item {
+    padding-left: 44px;
+    padding-right: 44px;
+}

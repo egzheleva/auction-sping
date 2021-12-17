@@ -1,0 +1,54 @@
+
+<div class="item-container" *ngIf="item">
+    <div class="image-container">
+        <div class="item-image" *ngFor="let image of item.imageNames">
+            <img  *ngIf="image" src="assets/images/{{image.imageName}}" alt="images">
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid item-description">
+        <div class="container">
+          <h3 class="display-4">{{item.itemName}}</h3>
+          <p class="lead">{{item.itemDescription}}</p>
+          <p class="lead">Current Price: {{item.currentPrice}}</p>
+          <div class="input-group mb-6">
+            <input type="text" class="form-control" placeholder="Place your bid" [(ngModel)]="item.newPrice">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="open(content)">Bid</button>
+            </div>
+            </div>
+        </div>
+      </div>
+
+</div>
+
+<ng-template #content let-modal>
+   <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+      <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div> 
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Are you sure you want to bid for this item?</label>
+          <!-- <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div> -->
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('No')">No</button>
+      <button type="button" class="btn btn-outline-dark" (click)="submitBid();">Yes</button>
+    </div>
+  </ng-template>
+  
+
+  <pre>{{ closeResult }}</pre>

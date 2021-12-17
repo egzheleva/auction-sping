@@ -1,0 +1,14 @@
+
+  <div class="card-container">
+<div *ngFor="let item of items">
+
+<div class="card" style="width: 18rem;">
+    <img src="assets/images/{{item.imageNames[0].imageName}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{item.itemName}}</h5>
+      <p class="card-text">{{item.itemDescription}}</p>
+      <a (click)="redirectToItem($event, item.itemId)" class="btn btn-primary btn-sm card-button">View More</a>
+    </div>
+  </div>
+</div>
+</div>

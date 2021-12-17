@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+    background-color: #e9e9e9 !important;
+}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+}
+
+.carousel-indicators {
+    margin: 0;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    /* background-color: #e9e9e9 !important; */
+}

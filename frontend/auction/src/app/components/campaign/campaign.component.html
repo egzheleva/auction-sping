@@ -1,0 +1,102 @@
+<div class="create-container">
+  <button type="button" class="btn btn-light" (click)="open(newCampaign)">+ Create new campaign</button>
+</div>
+
+<div class="campaign-container" *ngFor="let campaign of campaigns">
+  <ngb-carousel >
+    <ng-template ngbSlide *ngFor="let image of campaign.imageNames" >
+      <div class="picsum-img-wrapper" (click)="redirectToCampaign($event, campaign.campaignId)">
+        <img src="assets/images/{{image.imageName}}" alt="kur">
+      </div>
+      <div class="carousel-caption">
+        <h3>{{campaign.campaignName}}</h3>
+        <p>{{campaign.campaignDescription}}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+<ng-template #newCampaign let-modal>
+  <div class="modal-header">
+     <h4 class="modal-title" id="modal-basic-title">Create New Campaign</h4>
+     <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+       <span aria-hidden="true">&times;</span>
+     </button> -->
+   </div> 
+   <div class="modal-body">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Campaign Name</span>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="createdCampaign.campaignName" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+   
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Upload Image</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="handleFileInput($event.target.files)" accept=".jpeg,.png,.jpg">
+        <label class="custom-file-label" for="inputGroupFile01">Choose files</label>
+      </div>
+      <div *ngFor="let file of filesToUpload">{{file[0].name}}</div>
+    </div>
+    <!-- <a ngFor #file [ngForIn]="filesToUpload">{{file.name}}</a>
+        -->
+    <!-- <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Valid from</span>
+      </div>
+      <ngb-datepicker-popup #dp [(ngModel)]="createdCampaign.validFrom" (navigate)="date = $event.next"></ngb-datepicker-popup>
+    </div> -->
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Valid From</span>
+      </div>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="createdCampaign.validFrom" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><fa-icon [icon]="faCoffee"></fa-icon></button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Valid To</span>
+      </div>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp2" [(ngModel)]="createdCampaign.validTo" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"><fa-icon [icon]="faCoffee"></fa-icon></button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Campaign Descripion</span>
+      </div>
+      <textarea class="form-control" aria-label="With textarea" [(ngModel)]="createdCampaign.campaignDescription"></textarea>
+    </div>
+     <!-- <form>
+       
+
+     </form> -->
+   </div>
+   <div class="modal-footer">
+     
+     <button type="button" class="btn btn-outline-dark" (click)="modal.close('No')">Discard</button>
+     <button type="button" class="btn btn-outline-dark" (click)="createNewCampaign();">Create</button>
+   </div>
+ </ng-template>
