@@ -33,7 +33,5 @@ export class AuthService {
     user.middleName = middleName;
     user.lastName = lastName;
     return this.http.post<any>('http://localhost:8091/users/createUser', user, httpOptions);
-
-    //return this.http.post(AUTH_API + 'createUser', user)
   }
 }

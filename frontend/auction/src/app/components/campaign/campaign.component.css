@@ -4,24 +4,13 @@
     padding-top: 35px;
 }
 
-
 ngb-carousel {
-
     width: 550px;
     height: 350px;
-
 }
 ngb-carousel img {
     width: 550px;
     height: 350px;
-
-    /* -webkit-filter: blur(1px); 
-    -moz-filter: blur(1px); 
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px); 
-    filter: blur(1px);
-     */
-
 }
 
 .carousel-caption {
@@ -34,19 +23,10 @@ ngb-carousel img {
     opacity: 0.6;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-  
-  /* 
-  !!!! blured
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px); */
 }
 
 .create-container {
     margin-left: 35px;
     margin-top: 11px;
 
-}
-
-.input-group-text {
-    /* width: 171px; */
 }

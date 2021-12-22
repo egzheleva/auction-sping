@@ -32,15 +32,6 @@ export class HttpClientService {
     private httpClient: HttpClient, 
   ) { }
 
-  // getEmployees() {
-  //   console.log("test call");
-  //   return this.httpClient.get<Employee[]>('http://localhost:8091/api/employees');
-  // }
-
-  // getEmployees(): Observable<Auction[]> {
-  //   return this.httpClient.get<Auction[]>('http://localhost:8091/api/employees');
-  // }
-
   getAllCampaigns(): Observable<Campaign[]> {
     return this.httpClient.get<Campaign[]>('http://localhost:8091/campaign/all');
   }
@@ -65,12 +56,6 @@ export class HttpClientService {
     return this.httpClient.get<Item[]>('http://localhost:8091/item/getUserItems', {params});
   }
 
-  // createNewCampaign(createdCampaign: Campaign, fileToUpload: File): Observable<Campaign> {
-  //   const formData: FormData = new FormData();
-  //   formData.append('fileKey', fileToUpload, fileToUpload.name);
-  //   return this.httpClient.post<Campaign>('http://localhost:8091/campaign/createNewCampaign', formData, { headers: {'Content-Type': 'multipart/form-data' }}, );
-  // }
-
   createNewCampaign(createdCampaign: Campaign, filesToUploads: File[]): Observable<any> {
 
     let headers = new HttpHeaders();
@@ -88,21 +73,6 @@ export class HttpClientService {
         formData.append('filesArray', filesToUploads[i][0], filesToUploads[i][0].name);
       }
     }
-   
     return this.httpClient.post('http://localhost:8091/campaign/createNewCampaign', formData, { params, headers });
-
   }
-
-
-
-//   postFile(fileToUpload: File): Observable<boolean> {
-//     const endpoint = 'your-destination-url';
-//     const formData: FormData = new FormData();
-//     formData.append('fileKey', fileToUpload, fileToUpload.name);
-//     return this.httpClient
-//       .post(endpoint, formData, { headers: {'Content-Type': 'multipart/form-data' }})
-//       .map(() => { return true; })
-//       .catch((e) => this.handleError(e));
-// }
-
 }

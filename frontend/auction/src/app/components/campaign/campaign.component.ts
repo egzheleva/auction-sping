@@ -55,19 +55,10 @@ export class CampaignComponent implements OnInit {
   createNewCampaign() {
     this.httpClientService.createNewCampaign(this.createdCampaign, this.filesToUpload).subscribe(
       response => {
-        //this.item = response;
         this.modalService.dismissAll();
         this.getAllCampaigns();
       }
      );
   }
 
-
-// uploadFileToActivity() {
-//   this.httpClientService.postFile(this.fileToUpload).subscribe(data => {
-//     // do something, if upload success
-//     }, error => {
-//       console.log(error);
-//     });
-// }
 }

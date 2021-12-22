@@ -16,13 +16,9 @@
   </ngb-carousel>
 </div>
 
-
 <ng-template #newCampaign let-modal>
   <div class="modal-header">
      <h4 class="modal-title" id="modal-basic-title">Create New Campaign</h4>
-     <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-       <span aria-hidden="true">&times;</span>
-     </button> -->
    </div> 
    <div class="modal-body">
     <div class="input-group mb-3">
@@ -42,14 +38,6 @@
       </div>
       <div *ngFor="let file of filesToUpload">{{file[0].name}}</div>
     </div>
-    <!-- <a ngFor #file [ngForIn]="filesToUpload">{{file.name}}</a>
-        -->
-    <!-- <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Valid from</span>
-      </div>
-      <ngb-datepicker-popup #dp [(ngModel)]="createdCampaign.validFrom" (navigate)="date = $event.next"></ngb-datepicker-popup>
-    </div> -->
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">Valid From</span>
@@ -89,10 +77,6 @@
       </div>
       <textarea class="form-control" aria-label="With textarea" [(ngModel)]="createdCampaign.campaignDescription"></textarea>
     </div>
-     <!-- <form>
-       
-
-     </form> -->
    </div>
    <div class="modal-footer">
      

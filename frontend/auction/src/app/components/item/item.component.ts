@@ -29,10 +29,6 @@ export class ItemComponent implements OnInit {
      );
   }
 
-  // redirectToItem(event, itemId)  {
-  //   event.preventDefault();
-  //   this.router.navigate(['/item', itemId])
-  // }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -42,22 +38,12 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  // private getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return 'by pressing ESC';
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return 'by clicking on a backdrop';
-  //   } else {
-  //     return `with: ${reason}`;
-  //   }
-  // }
 
 
   submitBid() {
     console.log(this.item.newPrice);
     this.httpClientService.submitBid(this.item).subscribe(
       response => {
-        //this.item = response;
         this.modalService.dismissAll();
         this.item = response;
       }
