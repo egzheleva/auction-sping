@@ -27,14 +27,6 @@ import com.auction.model.Image;
 @Repository
 public class ItemDaoImpl implements ItemDao {
 
-//	@Autowired
-//	DataSource dataSource;
-//	
-//	@PostConstruct
-//	private void initialize() {
-//		setDataSource(dataSource);
-//	}
-//	
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTmpl;
 
@@ -127,7 +119,7 @@ public class ItemDaoImpl implements ItemDao {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" update item ");
 		sql.append(" set currentPrice = :newPrice, ");
-		sql.append(" bidderId = 1 "); // TODO remove this harcoded sh*t
+		sql.append(" bidderId = 1 "); // TODO remove this harcoded thing
 		sql.append(" where id = :itemId    ");
 
 		MapSqlParameterSource paramMap = new MapSqlParameterSource();

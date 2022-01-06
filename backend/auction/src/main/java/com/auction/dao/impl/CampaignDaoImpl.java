@@ -27,15 +27,6 @@ import com.auction.model.Item;
 
 @Repository
 public class CampaignDaoImpl implements CampaignDao {
-
-/*	@Autowired
-	DataSource dataSource;
-
-	@PostConstruct
-	private void initialize() {
-		setDataSource(dataSource);
-	}*/
-
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTmpl;
 	
@@ -55,9 +46,7 @@ public class CampaignDaoImpl implements CampaignDao {
 					campaign.setCampaignId(rs.getLong("campaignId"));
 					campaign.setCampaignName(rs.getString("campaignName"));
 					campaign.setCampaignDescription(rs.getString("campaignDescr"));
-					
 					//campaign.setItems(getItemsForCampaign(campaign.getCampaignId()));
-					
 					List<Image> campaignImages = getImagesForCampaign(campaign.getCampaignId());
 					campaign.setImageNames(campaignImages);
 					

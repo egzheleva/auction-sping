@@ -25,8 +25,7 @@ import security.jwt.JwtUtils;
 import security.services.UserDetailsImpl;
 
 @RestController
-//@PreAuthorize("hasAnyRole('ADMIN', 'RM')")
-// @PreAuthorize("hasAnyRole('ADMIN', 'CC')")
+
 @RequestMapping("/users")
 public class UserController {
 	
@@ -42,7 +41,6 @@ public class UserController {
 	@Autowired
 	PasswordEncoder encoder;
 
-	//@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	@RequestMapping("/createUser")
 	public AngularJSONResponse createUser(@RequestBody User user) {
 		//try {
@@ -95,30 +93,6 @@ public class UserController {
 //
 //	}
 //
-//	@PreAuthorize("permitAll()")
-//	@RequestMapping("/getUserByRegistrationToken")
-//	public AngularJSONResponse getUserByRegistrationToken(String token) {
-//
-//		User user = null;
-//		try {
-//			user = userService.getUserByRegistrationToken(token);
-//
-//		} catch (UsedRegistrationTokenException e) {
-//			AjaxStatus status = new AjaxStatus(Constants.HTTP_STATUS_BUSINESS_ERROR, Constants.REG_TOKEN_ALREADY_USED,
-//					"You have already completed your registration! Please login!");
-//			return new AngularJSONResponse(status, null);
-//		}
-//		return new AngularJSONResponse(user);
-//	}
-//
-//	@PreAuthorize("permitAll()")
-//	@RequestMapping("/createActiveRegistrationForUser")
-//	public AngularJSONResponse createActiveRegistrationForUser(String password, String token) {
-//
-//		userService.createActiveRegistrationForUser(password, token);
-//		return new AngularJSONResponse("Password saved!");
-//
-//	}
 //
 //	@PreAuthorize("hasAnyRole('MODERATOR', 'ADMIN')")
 //	@RequestMapping("/getFilteredUsers")
@@ -126,18 +100,6 @@ public class UserController {
 //		return new AngularJSONResponse(userService.getFilteredUsers(name));
 //
 //	}
-//
-//	@RequestMapping("/getAllRoles")
-//	public AngularJSONResponse getAllRoles() {
-//		return new AngularJSONResponse(userService.getAllRoles());
-//	}
-//
-//	@PreAuthorize("hasAnyRole('MODERATOR', 'ADMIN')")
-//	@RequestMapping("/getParticipantsForCampaign")
-//	public AngularJSONResponse getParticipantsForCampaign(Long campaignId) {
-//		List<User> participants = userService.getParticipantsForCampaign(campaignId);
-//		return new AngularJSONResponse(participants);
-//
-//	}
+
 
 }

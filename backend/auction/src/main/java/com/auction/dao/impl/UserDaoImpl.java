@@ -61,8 +61,6 @@ public class UserDaoImpl implements UserDao {
 					user.setRoleId(rs.getInt("role_id"));
 					user.setRegisteredOn(rs.getDate("registered_on"));
 					user.setRoleId(rs.getInt("role_id"));
-					//user.setRoles(getListOfRolesById(user.getId()));
-					//user.setOrganizationId(rs.getLong("organization_id"));
 				}
 				return user;
 			}
@@ -88,33 +86,7 @@ public class UserDaoImpl implements UserDao {
 		paramMap.put("role_id", user.getRoleId());
 		paramMap.put("password", encoder.encode(user.getPassword().toString()));
 
-//		try {
-			jdbcTmpl.update(sql.toString(), paramMap);
-
-			//insertUserRole(userId, u.getRoleId());
-//
-//			paramMap = new HashMap<String, Object>();
-//			
-//			for (Role role : u.getRoles()) {
-//				sql = new StringBuilder();
-//				sql.append(" insert into user_role (id, user_id, role_id) values ");
-//				sql.append(" ( user_role_seq.nextval, :userId, :roleId ) ");
-//				
-//				paramMap.clear();
-//				paramMap.put("userId", userId);
-//				paramMap.put("roleId", role.getId());
-//				
-//				jdbcTmpl.update(sql.toString(), paramMap);
-//			}
-			
-//			}
-
-//		} catch (DuplicateKeyException e) {
-//			if (e.getCause().getMessage().contains("Duplicate entry") //TODO taq proverka za kvo  ni e?
-//					&& e.getCause().getMessage().contains("for key 'token_UNIQUE'")) {
-//				this.createUser(u, creator, attempt + 1);
-//			}
-//		}
+		jdbcTmpl.update(sql.toString(), paramMap);
 	}
 
 	
