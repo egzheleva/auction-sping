@@ -3,8 +3,12 @@ package com.auction.controllers;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,13 +29,14 @@ public class CampaignController {
 	private CampaignService campaignService;
 	
 	
-	
+	//@RolesAllowed("ADMIN")
 	@GetMapping(value = "/all", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Campaign> getAllCampaigns() {
 		
 		return campaignService.getAllCampaigns();
 	}
 	
+   // @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	@PostMapping(value="/createNewCampaign", consumes= "multipart/form-data") 
 	public Campaign createNewCampaign(@RequestParam("filesArray") MultipartFile[] filesArray, 
 	        @RequestParam(value = "campaignName", required = false) String campaignName,

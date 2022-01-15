@@ -16,7 +16,7 @@ public class User {
 	private String email;
 	private Date registeredOn;
 	private String password;
-	private Set roles = new HashSet<Role>();
+	private Set<Role> roles = new HashSet<Role>();
 	private Integer roleId;
 	private String phoneNumber;
 	

@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.auction.model.ERole;
+
 import security.jwt.AuthEntryPointJwt;
 import security.jwt.AuthTokenFilter;
 import security.services.UserDetailsServiceImpl;
@@ -63,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/**").permitAll()
 			.antMatchers("/api/test/**").permitAll()
 			.antMatchers("/users/**").permitAll()
+		//	.antMatchers("/campaign/**").hasRole(Constants.ROLE_ADMIN)
 			.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

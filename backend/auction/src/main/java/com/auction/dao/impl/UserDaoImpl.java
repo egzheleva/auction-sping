@@ -3,7 +3,9 @@ package com.auction.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +62,7 @@ public class UserDaoImpl implements UserDao {
 					user.setLastName(rs.getString("lastName"));
 					user.setRoleId(rs.getInt("role_id"));
 					user.setRegisteredOn(rs.getDate("registered_on"));
-					user.setRoleId(rs.getInt("role_id"));
+					user.setRoles(setUserRoles(user.getRoleId()));
 				}
 				return user;
 			}
@@ -69,6 +71,14 @@ public class UserDaoImpl implements UserDao {
 		return new UserRepositoryUserDetails(user);
 	}
 
+	private Set<Role> setUserRoles(Integer roleId) {
+		Set<Role> roles = new HashSet<Role>();
+		Role role = new Role();
+		role.setId(roleId);
+		role.setName("ADMIN"); // TODO fix this
+		roles.add(role);
+		return roles;
+	}
 	@Override
 	public void createUser(User user) {
 
